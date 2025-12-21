@@ -19,6 +19,7 @@ public class Product {
     private String name;
     private BigDecimal price;
     private Long stock;
+    private Boolean isActive;
 
 
 
