@@ -1,6 +1,5 @@
 package org.leoromero.productservices.service.impl;
 
-import org.leoromero.productservices.ProductServicesApplication;
 import org.leoromero.productservices.model.Product;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public interface ProductService {
 
     Product createProduct(Product product);
 
-    void deleteProduct(Long id);
+    void deleteById(Long id);
 
     boolean existSKU(Product product);
 

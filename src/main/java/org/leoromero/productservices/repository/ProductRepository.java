@@ -13,7 +13,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     List<Product> findAll ();
 
-    void delete(Long id);
+    void deleteById(Long id);
 
     boolean existsBySku(String sku);
 

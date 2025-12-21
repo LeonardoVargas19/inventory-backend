@@ -49,10 +49,10 @@ public class ProductImp implements ProductService {
     }
 
     @Override
-    public void deleteProduct(Long id) {
+    public void deleteById(Long id) {
         Product product = findId(id);
         log.info("PRODUCTO ELIMINADO{} ... {}", product.getName(), product.getSku());
-        productRepository.delete(id);
+        productRepository.deleteById(id);
     }
 
     @Override
