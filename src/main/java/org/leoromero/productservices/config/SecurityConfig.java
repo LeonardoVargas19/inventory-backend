@@ -26,6 +26,7 @@ public class SecurityConfig {
                                 // Para TODO lo demás (POST, DELETE, etc.), pedir contraseña
                                 .requestMatchers(HttpMethod.POST, "/api/product/").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/product/stock").permitAll()
+                                .requestMatchers("/actuator/**").permitAll()
                                 .requestMatchers("/error").permitAll()
                                 .anyRequest().authenticated()
 

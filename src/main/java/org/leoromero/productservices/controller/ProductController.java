@@ -32,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/stock")
-    public ResponseEntity<List<InventoryResponse>> getStock(@RequestParam(name = "skuCode", required = false) List<String> skuCode) {
+    public ResponseEntity<List<InventoryResponse>> getStock( @RequestParam List<String> skuCode) {
         return new ResponseEntity<>(productService.findBySkuIn(skuCode), HttpStatus.OK);
     }
 
