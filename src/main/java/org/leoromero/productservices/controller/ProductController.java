@@ -2,16 +2,18 @@ package org.leoromero.productservices.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.leoromero.productservices.model.Product;
+import org.leoromero.productservices.model.dto.InventoryResponse;
 import org.leoromero.productservices.service.impl.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("api/product")
+@RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductController {
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
@@ -28,6 +30,12 @@ public class ProductController {
         log.info("FIND PRODUCT BY ID");
         return new ResponseEntity<>(productService.findId(id), HttpStatus.OK);
     }
+
+    @GetMapping("/stock")
+    public ResponseEntity<List<InventoryResponse>> getStock( @RequestParam List<String> skuCode) {
+        return new ResponseEntity<>(productService.findBySkuIn(skuCode), HttpStatus.OK);
+    }
+
 
     @PostMapping()
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {

@@ -11,11 +11,13 @@ import java.util.Optional;
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
-    List<Product> findAll ();
+    List<Product> findAll();
 
     void deleteById(Long id);
 
     boolean existsBySku(String sku);
+
+    List<Product> findBySkuIn(List<String> skus);
 
 
 }
