@@ -40,6 +40,8 @@ public class ProductImp implements ProductService {
         }
         log.info("SE REGISTRO EXITOSAMENTE EL PRODUCTO{}", product);
         product.setIsActive(true);
+        Product product1 = findId(product.getId());
+        product.setPrice(product1.getPrice());
         return productRepository.save(product);
     }
 
@@ -62,6 +64,7 @@ public class ProductImp implements ProductService {
                 .map(product -> InventoryResponse.builder()
                         .sku(product.getSku())
                         .isInStock(product.getStock() > 0)
+                        .prices(product.getPrice())
                         .build()
                 ).collect(Collectors.toList());
 
