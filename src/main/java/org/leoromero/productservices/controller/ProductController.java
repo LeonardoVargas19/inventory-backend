@@ -1,5 +1,7 @@
 package org.leoromero.productservices.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.leoromero.productservices.model.Product;
 import org.leoromero.productservices.model.dto.InventoryResponse;
@@ -15,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
+@Tag(name = "Product API", description = "Controlador para gestionar el inventario de productos")
 public class ProductController {
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
     private final ProductService productService;
@@ -38,7 +41,7 @@ public class ProductController {
         return new ResponseEntity<>(productService.findBySkuIn(skuCode), HttpStatus.OK);
     }
 
-
+    @Operation(summary = "Crear Producto", description = "Guarda un nuevo producto en la base de datos")
     @PostMapping()
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
         log.info("CREATE NEW PRODUCT");
